@@ -1050,64 +1050,256 @@ section[id$="-section"] h2 {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    /* Header and Navigation */
+    .navbar {
+        padding: 15px;
+        background: linear-gradient(to right, #1a1a1a, #333) !important;
+    }
+
+    .navbar-brand {
+        color: white !important;
+        font-size: 1.4rem;
+        font-weight: 600;
+    }
+
+    .navbar-toggler {
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        padding: 10px;
+        margin-left: 10px;
+    }
+
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    .navbar-collapse {
+        background: linear-gradient(to bottom, #1a1a1a, #333);
+        padding: 20px;
+        border-radius: 0 0 15px 15px;
+        margin-top: 15px;
+    }
+
+    .navbar-nav .nav-link {
+        color: white !important;
+        padding: 15px 20px;
+        border-radius: 8px;
+        margin: 5px 0;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        transition: all 0.3s ease;
+    }
+
+    .navbar-nav .nav-link:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateX(10px);
+    }
+
+    /* Welcome Section */
+    .hero-content {
+        padding: 60px 20px;
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8));
+    }
+
     .hero-content h1 {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin-bottom: 25px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     }
 
-    .hero-content .lead {
-        font-size: 1.2rem;
+    .features-container {
+        padding: 20px;
+        gap: 15px;
     }
 
-    .hero-features {
-        gap: 1.5rem;
+    .feature-item {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 30px;
+        padding: 15px 25px;
+        width: 90%;
+        margin: 5px 0;
     }
 
-    .hero-features .feature {
-        min-width: 150px;
+    .feature-item i {
+        font-size: 22px;
+        margin-right: 15px;
     }
 
-    .hero-cta .btn {
-        padding: 0.8rem 1.5rem;
+    /* Products Section */
+    .product-section {
+        padding: 40px 15px;
+    }
+
+    .section-title {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 30px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .product-info {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 25px 20px;
+        margin: 15px 0;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-info h2 {
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+        color: #333;
+    }
+
+    .product-details {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 15px;
+        margin: 20px 0;
+    }
+
+    .product-details li {
+        padding: 12px 0;
         font-size: 1rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     }
 
-    .card-body {
-        padding: 1.5rem;
+    .product-details i {
+        color: var(--primary-color);
+        margin-right: 12px;
+        font-size: 18px;
     }
 
-    .card-title {
+    .price {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin: 20px 0;
+    }
+
+    .btn-primary {
+        padding: 12px 25px;
+        font-size: 1rem;
+        font-weight: 600;
+        border-radius: 30px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Gallery */
+    .swiper-container {
+        height: 350px;
+        border-radius: 20px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 50%;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Contact Section */
+    .contact-message {
+        background: linear-gradient(145deg, #ffffff, #f8f9fa);
+        padding: 30px 25px;
+        border-radius: 20px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    /* WhatsApp Button */
+    .whatsapp-button {
+        width: 60px;
+        height: 60px;
+        right: 20px;
+        bottom: 20px;
+        background: #25D366;
+        border-radius: 50%;
+        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease;
+    }
+
+    .whatsapp-button:hover {
+        transform: scale(1.1);
+    }
+
+    .whatsapp-button i {
+        font-size: 32px;
+        color: white;
+    }
+
+    /* Footer */
+    footer {
+        background: linear-gradient(to right, #1a1a1a, #333);
+        padding: 50px 0 30px;
+        color: white;
+    }
+
+    footer h5 {
+        color: white;
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+
+    footer a {
+        color: rgba(255, 255, 255, 0.8);
+        transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+        color: white;
+        text-decoration: none;
+    }
+
+    footer .list-unstyled li {
+        margin: 12px 0;
+    }
+
+    footer hr {
+        border-color: rgba(255, 255, 255, 0.1);
+        margin: 30px 0 20px;
+    }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .product-info h2 {
         font-size: 1.3rem;
     }
 
-    .card-text.price {
-        font-size: 1.5rem;
-    }
-}
-
-@media (max-width: 576px) {
-    .hero-features {
-        flex-direction: column;
-        align-items: center;
+    .swiper-container {
+        height: 250px;
     }
 
-    .hero-features .feature {
-        width: 100%;
-        max-width: 300px;
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+        border-radius: 25px;
     }
 
-    .hero-cta {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
+    .product-section {
+        padding: 30px 0;
     }
 
-    .hero-cta .btn {
-        width: 100%;
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 25px;
     }
-}
-
-html {
-    scroll-behavior: smooth;
 }
 
 /* Remove all gallery styles */
@@ -1504,32 +1696,84 @@ html {
     }
 }
 
-/* Small phones */
-@media (max-width: 480px) {
-    .hero-content h1 {
-        font-size: 1.8rem;
+html {
+    scroll-behavior: smooth;
+}
+
+/* QR Code Styles */
+.qr-section {
+    padding: 20px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    margin-top: 20px;
+}
+
+.qr-container {
+    position: relative;
+    display: inline-block;
+    margin: 15px 0;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.qr-code {
+    display: block;
+    max-width: 150px;
+    height: auto;
+    border-radius: 15px;
+    background: white;
+    padding: 10px;
+}
+
+.qr-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #25D366;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.9;
+}
+
+.qr-overlay i {
+    color: white;
+    font-size: 24px;
+}
+
+.contact-info li {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+}
+
+.contact-info i {
+    margin-right: 12px;
+    width: 20px;
+    color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+    .qr-section {
+        margin-top: 30px;
+        background: rgba(255, 255, 255, 0.08);
+        padding: 25px 15px;
     }
 
-    .product-info h2 {
-        font-size: 1.3rem;
+    .qr-code {
+        max-width: 130px;
     }
 
-    .swiper-container {
-        height: 250px;
+    .contact-info {
+        text-align: left;
     }
 
-    .btn {
-        padding: 10px 20px;
-        font-size: 0.95rem;
-        border-radius: 25px;
-    }
-
-    .product-section {
-        padding: 30px 0;
-    }
-
-    .section-title {
-        font-size: 1.8rem;
-        margin-bottom: 25px;
+    .contact-info li {
+        padding: 10px 0;
     }
 }
