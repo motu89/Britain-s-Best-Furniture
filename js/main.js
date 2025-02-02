@@ -355,6 +355,21 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     initializeSearch();
+
+    // Close mobile menu when clicking nav links
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+    const navbarToggler = document.querySelector('.navbar-toggler');
+    const navbarCollapse = document.querySelector('.navbar-collapse');
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth < 992) { // Only on mobile
+                navbarCollapse.classList.remove('show');
+                navbarToggler.classList.add('collapsed');
+                navbarToggler.setAttribute('aria-expanded', 'false');
+            }
+        });
+    });
 });
 
 function loadProducts() {
