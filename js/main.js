@@ -356,20 +356,33 @@ document.addEventListener('DOMContentLoaded', function() {
 
     initializeSearch();
 
-    // Close mobile menu when clicking nav links
+    // Mobile menu handling
     const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
-    const navbarToggler = document.querySelector('.navbar-toggler');
     const navbarCollapse = document.querySelector('.navbar-collapse');
+    const navbarToggler = document.querySelector('.navbar-toggler');
 
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+        const isClickInsideNavbar = event.target.closest('.navbar');
+        if (!isClickInsideNavbar && navbarCollapse.classList.contains('show')) {
+            closeMenu();
+        }
+    });
+
+    // Close menu when clicking on links
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
-            if (window.innerWidth < 992) { // Only on mobile
-                navbarCollapse.classList.remove('show');
-                navbarToggler.classList.add('collapsed');
-                navbarToggler.setAttribute('aria-expanded', 'false');
-            }
+            closeMenu();
         });
     });
+
+    function closeMenu() {
+        if (navbarCollapse.classList.contains('show')) {
+            navbarCollapse.classList.remove('show');
+            navbarToggler.classList.add('collapsed');
+            navbarToggler.setAttribute('aria-expanded', 'false');
+        }
+    }
 });
 
 function loadProducts() {
