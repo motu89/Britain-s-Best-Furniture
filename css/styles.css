@@ -1316,3 +1316,135 @@ html {
     color: white;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
+
+.product-details {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+    font-size: 0.95rem;
+}
+
+.product-details li {
+    margin: 8px 0;
+    color: #666;
+}
+
+.product-details i {
+    margin-right: 8px;
+    color: var(--primary-color);
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    /* Header and Navigation */
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+
+    /* Welcome Section */
+    .hero-content h1 {
+        font-size: 2rem;
+        padding: 0 15px;
+    }
+
+    .features-container {
+        padding: 15px 10px;
+    }
+
+    .feature-item {
+        width: 100%;
+        margin: 5px 0;
+        justify-content: center;
+    }
+
+    /* Products Section */
+    .product-info {
+        padding: 15px;
+    }
+
+    .product-info h2 {
+        font-size: 1.5rem;
+    }
+
+    .product-details {
+        text-align: left;
+        margin: 10px auto;
+        max-width: 280px;
+    }
+
+    .product-details li {
+        font-size: 0.9rem;
+    }
+
+    .price {
+        font-size: 1.1rem;
+        margin: 10px 0;
+    }
+
+    /* Gallery */
+    .swiper-container {
+        height: 300px;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        padding: 20px;
+        width: 30px;
+        height: 30px;
+    }
+
+    /* Contact Section */
+    .contact-message {
+        padding: 15px;
+        margin: 15px;
+    }
+
+    .contact-message ul {
+        padding-left: 10px;
+    }
+
+    /* WhatsApp Button */
+    .whatsapp-button {
+        width: 50px;
+        height: 50px;
+        right: 15px;
+        bottom: 15px;
+    }
+
+    .whatsapp-button i {
+        font-size: 28px;
+    }
+
+    /* Footer */
+    footer {
+        text-align: center;
+    }
+
+    footer .col-md-4 {
+        margin-bottom: 20px;
+    }
+
+    footer h5 {
+        margin-top: 15px;
+    }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .product-info h2 {
+        font-size: 1.3rem;
+    }
+
+    .swiper-container {
+        height: 250px;
+    }
+
+    .btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+}
