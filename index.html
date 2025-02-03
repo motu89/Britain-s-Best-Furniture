@@ -482,6 +482,7 @@
                     const img = document.createElement('img');
                     img.src = `./images/products/${category.folder}/image-${i}.jpg`;
                     img.alt = `${category.id.replace(/-/g, ' ')} ${i}`;
+                    img.setAttribute('data-fancybox', category.id);
                     slide.appendChild(img);
                     swiperWrapper.appendChild(slide);
                 }
@@ -507,24 +508,51 @@
 
             // Initialize Fancybox
             Fancybox.bind("[data-fancybox]", {
+                groupAll: true,
                 Toolbar: {
-                    display: [
-                        { id: "prev", position: "center" },
-                        { id: "counter", position: "center" },
-                        { id: "next", position: "center" },
-                        "zoom",
-                        "slideshow",
-                        "fullscreen",
-                        "close",
-                    ],
+                    display: {
+                        left: ["infobar"],
+                        middle: [
+                            "zoomIn",
+                            "zoomOut",
+                            "toggle1to1",
+                            "rotateCCW",
+                            "rotateCW",
+                            "flipX",
+                            "flipY",
+                        ],
+                        right: ["slideshow", "thumbs", "close"],
+                    },
+                },
+                Thumbs: {
+                    autoStart: true,
+                },
+                Carousel: {
+                    transition: "slide",
+                    friction: 0.96,
                 },
                 Images: {
                     zoom: true,
                 },
-                Carousel: {
-                    transition: "slide",
+                Slideshow: {
+                    timeout: 3000,
+                    autoStart: false,
                 },
-                dragToClose: false,
+                touch: {
+                    vertical: true,
+                    momentum: true
+                },
+                keyboard: {
+                    Escape: "close",
+                    Delete: "close",
+                    Backspace: "close",
+                    PageUp: "next",
+                    PageDown: "prev",
+                    ArrowUp: "prev",
+                    ArrowDown: "next",
+                    ArrowRight: "next",
+                    ArrowLeft: "prev",
+                }
             });
         });
     </script>

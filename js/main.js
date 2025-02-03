@@ -201,7 +201,7 @@ function addImagesToCarousel(carouselId, imagePath, count) {
         // Create Fancybox link
         const link = document.createElement('a');
         link.href = imageSrc;
-        link.setAttribute('data-fancybox', `${galleryName}`);
+        link.setAttribute('data-fancybox', `gallery-${galleryName}`);
         
         // Create image
         const img = document.createElement('img');
@@ -541,19 +541,7 @@ document.addEventListener('DOMContentLoaded', function() {
             ArrowDown: "next",
             ArrowRight: "next",
             ArrowLeft: "prev",
-        },
-        on: {
-            initCarousel: (fancybox) => {
-                const carousel = fancybox.Carousel;
-                if (carousel) {
-                    carousel.options.Panzoom = {
-                        touch: true,
-                        panOnlyZoomed: false,
-                        lockAxis: false,
-                    };
-                }
-            },
-        },
+        }
     });
 });
 
