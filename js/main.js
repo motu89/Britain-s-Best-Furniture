@@ -271,28 +271,50 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize Fancybox
     Fancybox.bind("[data-fancybox]", {
-        loop: true,
+        groupAll: true,
         Toolbar: {
-            display: [
-                "zoom",
-                "slideshow",
-                "fullscreen",
-                "thumbs",
-                "close"
-            ],
+            display: {
+                left: ["infobar"],
+                middle: [
+                    "zoomIn",
+                    "zoomOut",
+                    "toggle1to1",
+                    "rotateCCW",
+                    "rotateCW",
+                    "flipX",
+                    "flipY",
+                ],
+                right: ["slideshow", "thumbs", "close"],
+            },
         },
         Thumbs: {
             autoStart: true,
         },
         Carousel: {
             transition: "slide",
+            friction: 0.96,
         },
         Images: {
             zoom: true,
         },
+        Slideshow: {
+            timeout: 3000,
+            autoStart: false,
+        },
         touch: {
-            vertical: true,  // Allow vertical swipe
-            momentum: true   // Continue movement after releasing mouse/touch
+            vertical: true,
+            momentum: true
+        },
+        keyboard: {
+            Escape: "close",
+            Delete: "close",
+            Backspace: "close",
+            PageUp: "next",
+            PageDown: "prev",
+            ArrowUp: "prev",
+            ArrowDown: "next",
+            ArrowRight: "next",
+            ArrowLeft: "prev",
         }
     });
 
@@ -329,52 +351,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    Fancybox.bind('[data-fancybox]', {
-        loop: true,
-        buttons: [
-            'slideShow',
-            'fullScreen',
-            'thumbs',
-            'close'
-        ],
-        animationEffect: 'fade',
-        transitionEffect: 'slide',
-        touch: {
-            vertical: true,
-            momentum: true
-        },
-        wheel: 'slide',
-        slideShow: {
-            autoStart: false,
-            speed: 4000
-        },
-        thumbs: {
-            autoStart: true,
-            hideOnClose: true
-        }
-    });
-
     initializeSearch();
 
-    // Mobile menu handling
-    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
-    const navbarCollapse = document.querySelector('.navbar-collapse');
+    // Single mobile menu handler
     const navbarToggler = document.querySelector('.navbar-toggler');
-
-    // Close menu when clicking outside
-    document.addEventListener('click', function(event) {
-        const isClickInsideNavbar = event.target.closest('.navbar');
-        if (!isClickInsideNavbar && navbarCollapse.classList.contains('show')) {
-            closeMenu();
-        }
-    });
-
-    // Close menu when clicking on links
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            closeMenu();
-        });
-    });
+    const navbarCollapse = document.querySelector('.navbar-collapse');
 
     function closeMenu() {
         if (navbarCollapse.classList.contains('show')) {
@@ -383,6 +364,19 @@ document.addEventListener('DOMContentLoaded', function() {
             navbarToggler.setAttribute('aria-expanded', 'false');
         }
     }
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        const isClickInsideNavbar = e.target.closest('.navbar');
+        if (!isClickInsideNavbar && navbarCollapse.classList.contains('show')) {
+            closeMenu();
+        }
+    });
+
+    // Close mobile menu when clicking links
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
 
     // Product categories configuration with specific image counts
     const productCategories = [
@@ -495,54 +489,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Initialize Fancybox
-    Fancybox.bind("[data-fancybox]", {
-        groupAll: true,
-        Toolbar: {
-            display: {
-                left: ["infobar"],
-                middle: [
-                    "zoomIn",
-                    "zoomOut",
-                    "toggle1to1",
-                    "rotateCCW",
-                    "rotateCW",
-                    "flipX",
-                    "flipY",
-                ],
-                right: ["slideshow", "thumbs", "close"],
-            },
-        },
-        Thumbs: {
-            autoStart: true,
-        },
-        Carousel: {
-            transition: "slide",
-            friction: 0.96,
-        },
-        Images: {
-            zoom: true,
-        },
-        Slideshow: {
-            timeout: 3000,
-            autoStart: false,
-        },
-        touch: {
-            vertical: true,
-            momentum: true
-        },
-        keyboard: {
-            Escape: "close",
-            Delete: "close",
-            Backspace: "close",
-            PageUp: "next",
-            PageDown: "prev",
-            ArrowUp: "prev",
-            ArrowDown: "next",
-            ArrowRight: "next",
-            ArrowLeft: "prev",
-        }
-    });
+    // Announcement bar animation
+    const announcementContent = document.querySelector('.announcement-content');
+    if (announcementContent) {
+        announcementContent.addEventListener('animationend', () => {
+            announcementContent.style.animation = 'none';
+            announcementContent.offsetHeight; // Trigger reflow
+            announcementContent.style.animation = 'scroll-left 30s linear infinite';
+        });
+    }
 });
 
 function loadProducts() {
