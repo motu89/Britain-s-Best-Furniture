@@ -482,7 +482,6 @@
                     const img = document.createElement('img');
                     img.src = `./images/products/${category.folder}/image-${i}.jpg`;
                     img.alt = `${category.id.replace(/-/g, ' ')} ${i}`;
-                    img.setAttribute('data-fancybox', category.id);
                     slide.appendChild(img);
                     swiperWrapper.appendChild(slide);
                 }

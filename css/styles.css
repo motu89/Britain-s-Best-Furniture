@@ -98,10 +98,11 @@ body {
     width: 100%;
     z-index: 1030;
     height: 40px;
+    white-space: nowrap;
 }
 
 .announcement-content {
-    display: inline-flex;
+    display: inline-block;
     white-space: nowrap;
     animation: scroll-left 30s linear infinite;
     padding: 8px 0;

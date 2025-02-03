@@ -201,7 +201,7 @@ function addImagesToCarousel(carouselId, imagePath, count) {
         // Create Fancybox link
         const link = document.createElement('a');
         link.href = imageSrc;
-        link.setAttribute('data-fancybox', galleryName);
+        link.setAttribute('data-fancybox', `${galleryName}`);
         
         // Create image
         const img = document.createElement('img');
@@ -493,68 +493,67 @@ document.addEventListener('DOMContentLoaded', function() {
                 loadPrevNext: true,
             }
         });
+    });
 
-        // Initialize Fancybox for this category
-        Fancybox.bind(`[data-fancybox="gallery-${category.id}"]`, {
-            groupAll: true, // Group all images in the gallery
-            Toolbar: {
-                display: {
-                    left: ["infobar"],
-                    middle: [
-                        "zoomIn",
-                        "zoomOut",
-                        "toggle1to1",
-                        "rotateCCW",
-                        "rotateCW",
-                        "flipX",
-                        "flipY",
-                    ],
-                    right: ["slideshow", "thumbs", "close"],
-                },
+    // Initialize Fancybox
+    Fancybox.bind("[data-fancybox]", {
+        groupAll: true,
+        Toolbar: {
+            display: {
+                left: ["infobar"],
+                middle: [
+                    "zoomIn",
+                    "zoomOut",
+                    "toggle1to1",
+                    "rotateCCW",
+                    "rotateCW",
+                    "flipX",
+                    "flipY",
+                ],
+                right: ["slideshow", "thumbs", "close"],
             },
-            Thumbs: {
-                autoStart: true, // Show thumbnails by default
+        },
+        Thumbs: {
+            autoStart: true,
+        },
+        Carousel: {
+            transition: "slide",
+            friction: 0.96,
+        },
+        Images: {
+            zoom: true,
+        },
+        Slideshow: {
+            timeout: 3000,
+            autoStart: false,
+        },
+        touch: {
+            vertical: true,
+            momentum: true
+        },
+        keyboard: {
+            Escape: "close",
+            Delete: "close",
+            Backspace: "close",
+            PageUp: "next",
+            PageDown: "prev",
+            ArrowUp: "prev",
+            ArrowDown: "next",
+            ArrowRight: "next",
+            ArrowLeft: "prev",
+        },
+        on: {
+            initCarousel: (fancybox) => {
+                const carousel = fancybox.Carousel;
+                if (carousel) {
+                    carousel.options.Panzoom = {
+                        touch: true,
+                        panOnlyZoomed: false,
+                        lockAxis: false,
+                    };
+                }
             },
-            Carousel: {
-                transition: "slide",
-                friction: 0.96,
-            },
-            Images: {
-                zoom: true,
-            },
-            Slideshow: {
-                timeout: 3000,
-                autoStart: false,
-            },
-            touch: {
-                vertical: true,
-                momentum: true
-            },
-            keyboard: {
-                Escape: "close",
-                Delete: "close",
-                Backspace: "close",
-                PageUp: "next",
-                PageDown: "prev",
-                ArrowUp: "prev",
-                ArrowDown: "next",
-                ArrowRight: "next",
-                ArrowLeft: "prev",
-            },
-            on: {
-                initCarousel: (fancybox) => {
-                    // Enable touch gestures
-                    const carousel = fancybox.Carousel;
-                    if (carousel) {
-                        carousel.options.Panzoom = {
-                            touch: true,
-                            panOnlyZoomed: false,
-                            lockAxis: false,
-                        };
-                    }
-                },
-            },
-        });
+        },
     });
 });
 
